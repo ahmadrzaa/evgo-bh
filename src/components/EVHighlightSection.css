@@ -1,0 +1,24 @@
+.evgo-text-strip {
+  width: 100%;
+  padding: 40px 20px; /* reduced padding */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: rgb(14, 14, 14);
+  text-align: center;
+  overflow-x: hidden; /* ✅ prevent side scroll */
+  box-sizing: border-box;
+}
+
+.evgo-text-strip h2 {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.4;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  margin: 0;
+  padding: 0;
+  max-width: 90vw; /* ✅ prevents extra width */
+  word-wrap: break-word;
+}
