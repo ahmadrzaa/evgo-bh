@@ -1,0 +1,42 @@
+.evgo-text-strip {
+  width: 100%;
+  padding: 20px 12px; /* reduced from 40px 20px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: #111;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+.evgo-fade-text {
+  font-family: var(--tds-font-family-latin-display);
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.6s ease-in-out;
+  animation: fadeCycle 3.5s ease-in-out infinite;
+}
+
+.highlight-ev {
+  color: #22c55e;
+}
+
+/* optional: fade keyframe if you want smoother loop */
+@keyframes fadeCycle {
+  0%   { opacity: 0; transform: translateY(10px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+  .evgo-fade-text {
+    font-size: 28px;
+  }
+}

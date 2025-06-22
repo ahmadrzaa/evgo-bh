@@ -1,0 +1,281 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.topbar {
+  position: fixed;
+  top: 12vh;
+  left: 2vw;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10000;
+  padding-left: 50px;
+}
+
+/* ✅ Tesla-style custom select box */
+.custom-select-box {
+  position: relative;
+  width: 240px;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.075);
+  height: 50px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5c5e62;
+  cursor: pointer;
+}
+
+.custom-select-display {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-select-display::after {
+  content: "▾";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+/* ✅ Dropdown menu */
+.custom-select-dropdown {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.custom-select-option {
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #333;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+.custom-select-option:hover {
+  background-color: #f0f0f0;
+}
+
+/* ✅ Filter icon box same as before */
+.filter-box {
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.075);
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 20px;
+  color: #5c5e62;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* === Leaflet map & UI === */
+.leaflet-container {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  background: #e8e8e8;
+  outline: none;
+}
+
+.leaflet-control-zoom {
+  z-index: 9999;
+}
+
+/* ✅ Popup style */
+/* ✅ Override Leaflet popup default box and make it transparent */
+.leaflet-popup-content-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+
+.leaflet-popup-tip {
+  background: transparent !important;
+  box-shadow: none !important;
+  display: none !important;
+}
+
+
+
+/* ✅ Marker size */
+.leaflet-marker-icon {
+  transform: scale(0.85);
+}
+
+/* ✅ Clickable station name label */
+.station-name-label {
+  pointer-events: auto;
+}
+
+.station-name-label div {
+  font-size: 11px;
+  font-weight: 500;
+  color: #000;
+  /* background: rgba(255, 255, 255, 0.8); */
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-shadow: 0 0 1px #fff;
+}
+
+
+
+@media (max-width: 1024px) {
+  .topbar {
+    top: 12vh;
+    left: 2vw;
+    flex-direction: row;
+    gap: 12px;
+    padding-left: 30px;
+  }
+
+  .custom-select-box {
+    width: 200px;
+    height: 46px;
+    font-size: 13px;
+    padding: 0 14px;
+  }
+
+  .custom-select-display::after {
+    right: 14px;
+    font-size: 14px;
+  }
+
+  .custom-select-dropdown {
+    top: 48px;
+    max-height: 200px;
+  }
+
+  .custom-select-option {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .filter-box {
+    height: 46px;
+    width: 46px;
+  }
+
+  .filter-btn {
+    font-size: 18px;
+  }
+
+  .station-name-label div {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+
+  .leaflet-marker-icon {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    top: 10vh;
+    left: 2vw;
+    flex-direction: row;
+    gap: 10px;
+    padding-left: 20px;
+  }
+
+  .custom-select-box {
+    width: 180px;
+    height: 42px;
+    font-size: 12px;
+    padding: 0 12px;
+  }
+
+  .custom-select-display::after {
+    right: 12px;
+    font-size: 12px;
+  }
+
+  .custom-select-dropdown {
+    top: 44px;
+    max-height: 180px;
+  }
+
+  .custom-select-option {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  .filter-box {
+    height: 42px;
+    width: 42px;
+  }
+
+  .filter-btn {
+    font-size: 16px;
+  }
+
+  .station-name-label div {
+    font-size: 9px;
+    padding: 1px 4px;
+  }
+
+  .leaflet-marker-icon {
+    transform: scale(0.7);
+  }
+}

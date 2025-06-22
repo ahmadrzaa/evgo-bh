@@ -1,161 +1,246 @@
-/* --- HERO SECTION LAYOUT --- */
-.hero-wrapper {
-  width: 100%;
-  height: 420px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px; /* to give spacing for toggle/logo */
-}
-
-/* --- TOP BAR --- */
-.evgo-navbar {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1000;
-}
-
-/* Top nav links (desktop only) */
-.menu-center {
-  display: flex;
-  gap: 32px;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
-  padding: 10px 25px;
-  border-radius: 10px;
-}
-.menu-center a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 15px;
-  transition: color 0.2s ease-in-out;
-}
-.menu-center a:hover {
-  color: #facc15;
-}
-
-/* Toggle icon (only shown on mobile) */
-.toggle-icon {
-  display: none;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 26px;
-  color: white;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 6px 12px;
-  border-radius: 6px;
-  z-index: 2000;
-  cursor: pointer;
-}
-
-/* --- SIDEBAR MENU (Mobile Slide Left) --- */
-.sidebar-menu {
+.glass-header {
   position: fixed;
   top: 0;
-  left: -100%;
-  width: 260px;
-  height: 100vh;
-  background: #111;
-  padding: 25px 20px;
-  display: flex;
-  flex-direction: column;
-  z-index: 1500;
-  transition: left 0.3s ease-in-out;
-  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
-}
-
-.sidebar-menu.active {
   left: 0;
+  width: 100%;
+  height: 56px;
+  background: #f8f8f8; /* ✅ Light solid background */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 70px;
+  padding-right: 80px;
+  box-sizing: border-box;
 }
 
-.sidebar-menu nav {
-  margin-top: 40px;
+
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.goev-logo {
+  height: 128px;
+  object-fit: contain;
+}
+
+.add-station-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* background: transparent; */
+  border: 1px solid #000;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.add-station-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.add-station-btn i {
+  font-size: 14px;
+}
+
+.station-form-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;           /* ✅ align top */
+  justify-content: center;
+  padding-top: 80px;                 /* ✅ push down below header */
+  z-index: 10000;
+  overflow-y: auto;
+}
+
+
+.station-form-modal {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 30px 24px;
+  width: 90vw;
+  max-width: 480px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.station-form-modal h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.station-form-modal form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 }
-.sidebar-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
+
+.station-form-modal input,
+.station-form-modal select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
 }
-.sidebar-menu a:hover {
-  color: #facc15;
+
+input[type="file"] {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .close-btn {
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
-  align-self: flex-end;
-  margin-bottom: 10px;
-}
-
-/* --- LOGO ON LEFT --- */
-.logo-box-left {
   position: absolute;
-  top: 20px;
-  left: 60px;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(1px);
-  padding: 10px 22px;
-  border-radius: 10px;
-  z-index: 1001;
-}
-.logo {
-  font-size: 26px;
-  font-weight: 900;
-  color: #22d3ee;
-}
-.logo span {
-  color: #facc15;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
 }
 
-/* --- HERO TEXT BOX --- */
-.hero-content {
-  margin-top: 120px;
-  margin-left: 60px;
-  max-width: 700px;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(1px);
-  border-radius: 10px;
-  padding: 20px 30px;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+.user-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
-.hero-content h1 {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 10px;
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
 }
-.hero-content p {
+
+.user-name {
   font-size: 16px;
+  font-weight: 500;
+  color: #222;
 }
 
-/* --- MOBILE ONLY FIXES --- */
-@media (max-width: 768px) {
-  .menu-center {
-    display: none;
+.payment-method-select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+/* ✅ Responsive for Tablet & Mobile */
+@media (max-width: 1024px) {
+  .glass-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 64px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
-  .toggle-icon {
-    display: block;
+  .goev-logo {
+    height: 100px;
   }
 
-  .logo-box-left {
-    left: 20px;
-    top: 70px; /* space below toggle */
+  .add-station-btn {
+    padding: 6px 12px;
+    font-size: 13px;
   }
 
-  .hero-content {
-    margin: 140px 20px 0;
+  .station-form-modal {
     padding: 20px;
+    max-width: 90%;
+  }
+
+  .station-form-modal h2 {
+    font-size: 18px;
+  }
+
+  .station-form-modal input,
+  .station-form-modal select {
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .close-btn {
+    font-size: 20px;
+    top: 10px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .goev-logo {
+    height: 80px;
+  }
+
+  .add-station-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .station-form-modal {
+    padding: 16px;
+  }
+
+  .station-form-modal h2 {
+    font-size: 16px;
+  }
+
+  .station-form-modal input,
+  .station-form-modal select {
+    font-size: 12px;
+  }
+
+  .submit-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .close-btn {
+    font-size: 18px;
   }
 }

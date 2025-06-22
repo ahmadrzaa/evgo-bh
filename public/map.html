@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Bahrain EV Stations – Leaflet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; margin: 0; }
+    .ev-label {
+      background: white;
+      font-size: 13px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: bold;
+      color: black;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([26.25, 50.56], 12);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const evIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/888/888857.png', // red bolt
+    iconSize: [30, 30],
+    iconAnchor: [15, 30]
+  });
+
+  const stations = [
+    {
+      name: 'City Centre Bahrain EV Charger',
+      coords: [26.234387, 50.553623],
+      link: 'https://www.google.com/maps/place/City+Centre+Bahrain'
+    },
+    {
+      name: 'Atrium Mall Saar EV Station',
+      coords: [26.175420, 50.483843],
+      link: 'https://www.google.com/maps/place/Atrium+Mall+Bahrain'
+    },
+    {
+      name: 'Marassi Galleria Mall Charger',
+      coords: [26.285900, 50.655300],
+      link: 'https://www.google.com/maps/place/Marassi+Galleria+Mall'
+    },
+    {
+      name: 'Souq Al Baraha Chargers, Muharraq',
+      coords: [26.266400, 50.641700],
+      link: 'https://www.google.com/maps/place/Souq+Al+Baraha'
+    }
+  ];
+
+  stations.forEach(({ name, coords, link }) => {
+    const marker = L.marker(coords, { icon: evIcon }).addTo(map);
+
+    marker.bindTooltip(name, {
+      permanent: true,
+      direction: 'top',
+      className: 'ev-label',
+      offset: [0, -35]
+    });
+
+    marker.on('click', () => window.open(link, '_blank'));
+  });
+</script>
+</body>
+</html>
