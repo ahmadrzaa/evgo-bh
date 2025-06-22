@@ -1,8 +1,9 @@
-# ⚡ EVGO.BH – Bahrain EV Charging Station Map
+# ⚡ GOEV.BH – Bahrain EV Charging Station Map
 
 Live Project: [https://evgo-bh.vercel.app/](https://evgo-bh.vercel.app/)
 
-![Screenshot](https://github.com/user-attachments/assets/a20efc47-9312-42e2-aa2f-47a89bc6314d)
+![S](https://github.com/user-attachments/assets/6ed49bc6-5c9f-4273-bb9b-81bbae535387)
+
 
 ## 🚧 Project Status
 
